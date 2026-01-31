@@ -1,0 +1,688 @@
+/*
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+*/
+
+/* 月视图样式 */
+.calendar-scheduler-month-view {
+	padding: 20px;
+}
+
+.calendar-toolbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.calendar-title {
+	margin: 0;
+	font-size: 1.5em;
+}
+
+.calendar-nav-btn {
+	padding: 8px 16px;
+	background: var(--interactive-normal);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	cursor: pointer;
+	color: var(--text-normal);
+}
+
+.calendar-nav-btn:hover {
+	background: var(--interactive-hover);
+}
+
+.calendar-grid-container {
+	width: 100%;
+}
+
+.calendar-weekdays {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 1px;
+	margin-bottom: 1px;
+}
+
+.calendar-weekday {
+	padding: 10px;
+	text-align: center;
+	font-weight: bold;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.calendar-days-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 1px;
+}
+
+.calendar-day-cell {
+	min-height: 100px;
+	padding: 8px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	cursor: pointer;
+	transition: background-color 0.2s;
+	position: relative;
+	overflow: hidden; /* 确保内容不会溢出格子 */
+}
+
+.calendar-day-cell:hover {
+	background: var(--background-secondary);
+}
+
+.calendar-day-other-month {
+	background: var(--background-secondary-alt);
+	color: var(--text-muted);
+	opacity: 0.5;
+}
+
+.calendar-day-today {
+	background: var(--background-modifier-hover);
+	border: 2px solid var(--interactive-accent);
+	font-weight: bold;
+}
+
+.calendar-day-number {
+	font-size: 0.9em;
+	margin-bottom: 5px;
+	font-weight: 500;
+	
+	/* 使用主题变量代替硬编码颜色 */
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: var(--background-secondary-alt);
+	color: var(--text-normal);
+	transition: all 0.2s;
+	z-index: 2; /* 确保在最上层 */
+}
+
+.calendar-day-number:hover {
+	background-color: var(--background-modifier-hover);
+	transform: scale(1.1);
+}
+
+/* 今天日期的特殊样式，使用强调色 */
+.calendar-day-today .calendar-day-number {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+	font-weight: bold;
+}
+
+/* 移除之前的跳转小圆点样式 */
+/*
+.calendar-jump-dot {
+	width: 6px;
+	height: 6px;
+	background-color: var(--text-muted);
+	border-radius: 50%;
+	margin-top: 2px;
+	cursor: pointer;
+	opacity: 0.5;
+	transition: all 0.2s;
+}
+
+.calendar-jump-dot:hover {
+	background-color: var(--interactive-accent);
+	transform: scale(1.5);
+	opacity: 1;
+}
+*/
+
+.calendar-day-schedules {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-top: 25px; /* 为左上角的日期数字留出空间 */
+}
+
+.calendar-schedule-item {
+	font-size: 0.85em;
+	padding: 4px 6px;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	cursor: pointer;
+	overflow: hidden;
+	transition: opacity 0.2s;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 2px;
+}
+
+.schedule-checkbox-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.schedule-item-title {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.calendar-schedule-item:hover {
+	opacity: 0.9;
+}
+
+.schedule-completed {
+	opacity: 0.6;
+	text-decoration: line-through;
+}
+
+/* 日程详情浮层 */
+.calendar-schedule-tooltip {
+	z-index: 10000;
+	/* 其他样式在 JS 中设置以确保正确覆盖 */
+}
+
+.tooltip-title {
+	margin: 0 0 8px 0;
+	font-size: 1.1em;
+	border-bottom: 1px solid var(--background-modifier-border);
+	padding-bottom: 5px;
+}
+
+.tooltip-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.tooltip-note {
+	white-space: pre-wrap;
+}
+
+/* 按钮激活状态（如月视图可见性切换） */
+.scheduler-active {
+	background-color: var(--background-modifier-hover);
+	color: var(--interactive-accent);
+}
+
+/* 设置界面样式 */
+.categories-container {
+	margin: 10px 0;
+}
+
+.category-group {
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background: var(--background-secondary);
+}
+
+.category-group-header {
+	border-bottom: 1px solid var(--background-modifier-border);
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
+
+.category-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 5px 0;
+	padding: 5px;
+}
+
+.category-item button {
+	padding: 4px 8px;
+	font-size: 0.9em;
+}
+
+/* 周视图样式 */
+.calendar-scheduler-week-view {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	padding: 0;
+}
+
+/* 日视图样式 (复用周视图的很多样式) */
+.calendar-scheduler-day-view {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	padding: 0;
+}
+
+/* Make scroll container a column flex to stack header (sticky) and body */
+.week-body-scroll-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	overflow-y: auto;
+	position: relative;
+}
+
+/* Sticky Header */
+.week-header {
+	display: flex;
+	border-bottom: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+	flex-shrink: 0;
+	position: sticky;
+	top: 0;
+	z-index: 50; /* Ensure it stays above content */
+	width: 100%;
+}
+
+.time-gutter-header {
+	width: 60px; /* Width of the time axis */
+	flex-shrink: 0;
+	border-right: 1px solid var(--background-modifier-border);
+}
+
+.day-headers {
+	display: flex;
+	flex: 1;
+}
+
+.day-header-cell {
+	flex: 1;
+	text-align: center;
+	padding: 10px 5px;
+	border-right: 1px solid var(--background-modifier-border);
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.day-header-cell:last-child {
+	border-right: none;
+}
+
+.day-header-today {
+	color: var(--interactive-accent);
+	background-color: var(--background-modifier-hover);
+}
+
+/* Wrapper for Gutter + Grid Body */
+.week-body {
+	display: flex;
+	flex: 1;
+	width: 100%;
+}
+
+.week-time-gutter {
+	width: 60px;
+	flex-shrink: 0;
+	border-right: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	display: flex;
+	flex-direction: column;
+}
+
+.time-slot-label-container {
+	height: 50px; /* Adjusted to 50px */
+	position: relative;
+}
+
+.time-slot-text {
+	position: absolute;
+	top: 2px; /* Moved down to avoid being obscured by header */
+	right: 10px;
+	font-size: 0.8em;
+	color: var(--text-muted);
+}
+
+.week-grid-days {
+	flex: 1;
+	display: flex;
+	position: relative;
+}
+
+.week-day-column {
+	flex: 1;
+	border-right: 1px solid var(--background-modifier-border);
+	position: relative;
+	background: var(--background-primary);
+	display: flex;
+	flex-direction: column;
+}
+
+.week-day-column:last-child {
+	border-right: none;
+}
+
+/* Renamed class to ensure style update */
+.hour-grid-line-v2 {
+	height: 50px; /* Adjusted to 50px */
+	border-bottom: 1px solid var(--background-modifier-border);
+	box-sizing: border-box;
+}
+
+/* Current time indicator */
+.current-time-indicator {
+	position: absolute;
+	left: 0;
+	right: 0;
+	border-top: 2px solid var(--interactive-accent);
+	z-index: 10;
+	pointer-events: none;
+}
+
+.current-time-dot {
+	position: absolute;
+	left: -5px;
+	top: -5px;
+	width: 8px;
+	height: 8px;
+	background: var(--interactive-accent);
+	border-radius: 50%;
+}
+
+/* Week View Schedule Items */
+.week-schedule-item {
+	position: absolute;
+	left: 2px;
+	right: 2px;
+	padding: 4px;
+	border-radius: 4px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--interactive-accent); /* Fallback */
+	color: var(--text-normal);
+	font-size: 0.85em;
+	overflow: hidden;
+	cursor: pointer;
+	z-index: 5;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.week-schedule-item:hover {
+	z-index: 20;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+	transform: scale(1.02);
+}
+
+.week-schedule-item.is-completed {
+	opacity: 0.6;
+}
+
+.week-schedule-item.is-completed .week-schedule-title {
+	text-decoration: line-through;
+	color: var(--text-muted);
+}
+
+.week-schedule-item input[type="checkbox"] {
+	margin-top: 3px;
+	cursor: pointer;
+}
+
+.week-schedule-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.week-schedule-title {
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.2;
+}
+
+.week-schedule-category {
+	font-size: 0.8em;
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-top: 2px;
+}
+
+/* Home View Styles */
+.calendar-home-view {
+    padding: 20px;
+    background-color: var(--background-primary);
+}
+
+.home-stats-container {
+    background: var(--background-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.home-habit-table-section {
+    margin-bottom: 30px;
+    background: var(--background-secondary);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 10px;
+    background: var(--background-primary);
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-muted);
+    font-size: 1.1em;
+}
+
+.stat-value {
+    font-family: var(--font-monospace);
+}
+
+.home-charts-container {
+    background: var(--background-primary);
+}
+
+.charts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding-bottom: 10px;
+}
+
+.charts-header h2 {
+    margin: 0;
+}
+
+.chart-controls select {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--text-normal);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 800px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-wrapper {
+    background: var(--background-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-wrapper h4 {
+    margin: 0 0 15px 0;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Shared Dashboard Chart Style */
+.dashboard-chart-wrapper {
+    height: 500px; /* Fixed height for alignment */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-container canvas {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+.donut-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.donut-container canvas {
+    max-height: 100%;
+    max-width: 100%;
+    /* Let Chart.js determine size */
+}
+
+/* Time Dashboard Styles */
+.home-time-dashboard-container h2 {
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding-bottom: 10px;
+}
+
+.time-stat-card-large {
+    transition: transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 阴影一直显示 */
+}
+
+.time-stat-card-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* 悬停时阴影加深 */
+}
+
+/* Custom Legend Styles */
+.custom-legend-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    border-top: 1px solid var(--background-modifier-border); /* Separator */
+    width: 100%; /* Ensure it spans full width */
+}
+
+.custom-legend-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.85em;
+    color: var(--text-normal);
+    opacity: 1;
+    transition: opacity 0.2s;
+    user-select: none;
+}
+
+.custom-legend-item:hover {
+    opacity: 0.8;
+}
+
+.custom-legend-item.legend-hidden {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+.legend-expand-btn {
+    color: var(--text-accent);
+    cursor: pointer;
+    font-size: 0.85em;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+
+.legend-expand-btn:hover {
+    color: var(--text-accent-hover);
+}
+
+/* Habit Table Styles */
+.habit-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.habit-table th {
+    background-color: var(--background-primary-alt);
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 10px;
+    border-bottom: 2px solid var(--background-modifier-border);
+    font-size: 0.9em;
+}
+
+.habit-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    font-size: 0.95em;
+}
+
+.habit-table tr:last-child td {
+    border-bottom: none;
+}
+
+.habit-table td:first-child {
+    font-weight: 600;
+    color: var(--text-normal);
+    width: 80px;
+}
+
+.habit-table td svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+

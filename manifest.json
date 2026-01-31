@@ -1,0 +1,9 @@
+{
+	"id": "calendar-scheduler",
+	"name": "小明的日程管理器",
+	"version": "0.1.0",
+	"minAppVersion": "0.15.0",
+	"description": "一个功能丰富的日程管理插件，支持月视图、周视图和日视图，主页支持数据可视化，并将日程数据存储在 Markdown 文件中。",
+	"author": "MY Tian",
+	"isDesktopOnly": true
+}
