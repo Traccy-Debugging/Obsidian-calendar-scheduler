@@ -28,16 +28,20 @@
   - **日程类型占比**：通过 **甜甜圈图 (Donut Chart)** 直观展示不同一级分类的时间分配。
   - **详细明细统计**：通过 **堆叠条形图 (Stacked Bar Chart)** 展示一级分类及其下属二级分类的具体时长。
   - **交互式图表**：点击图表下方的 **分类图例**，可以动态隐藏或显示对应的分类数据。
+![1c98678be9b60942350d9db6ded61835](https://github.com/user-attachments/assets/bd04266a-c02b-4e5b-8735-b91e0e56ff83)
+![d64599c8238e577bc0427262adf660a7](https://github.com/user-attachments/assets/8f312ed6-a032-4c5d-97c5-75178a6a6154)
 
 ### 2. 月视图 (Month View) —— 宏观规划
 - **全局视角**：以月历形式展示整月安排。
 - **快速管理**：点击日期单元格可快速创建日程；直接在日期格内查看任务。
 - **详情预览**：鼠标悬停在日程项上可显示包含时间、分类、备注的浮层详情。
+![dd615e605aed371b02f7966458419175](https://github.com/user-attachments/assets/f2ddf960-2ecb-4f22-a52a-3c2c4fdcfc49)
 
 ### 3. 周视图 (Week View) —— 周间统筹
 - **时间轴布局**：采用 7:00 - 24:00 的标准时间块布局，清晰展示一周的时间分配。
 - **点击创建**：点击周视图顶部的 **日期表头**，可直接为该天创建新日程。
 - **精细排程**：支持在时间轴上查看日程的起止时间、标签和备注信息。
+![5fca30578aefad8c6229f9f313cefa64](https://github.com/user-attachments/assets/08c5754f-c63a-41de-929f-fe66119c3c48)
 
 ### 4. 日视图 (Day View) —— 专注执行
 - **侧边栏常驻**：默认在侧边栏打开，作为工作时的任务清单。
@@ -79,7 +83,3 @@
 
 1. 将 `main.js`、`manifest.json`、`styles.css` 放置于您的库文件夹 `.obsidian/plugins/calendar-scheduler/` 下。
 2. 在 Obsidian 设置 -> 社区插件中启用。
-
----
-
-感谢使用！如果您有任何建议或反馈，欢迎联系。
